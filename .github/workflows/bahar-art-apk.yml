@@ -1,4 +1,4 @@
-name: Build BaharArt APK
+name: Build Baharloo Art APK
 
 on:
   push:
@@ -41,12 +41,12 @@ jobs:
         run: gradle -p bahar-art-android :app:assembleDebug --stacktrace
 
       - name: Rename APK
-        run: cp bahar-art-android/app/build/outputs/apk/debug/app-debug.apk BaharArt-v1.0.apk
+        run: cp bahar-art-android/app/build/outputs/apk/debug/app-debug.apk BaharlooArt-v1.1.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: BaharArt-v1.0
-          path: BaharArt-v1.0.apk
+          name: BaharlooArt-v1.1
+          path: BaharlooArt-v1.1.apk
           if-no-files-found: error
           retention-days: 7
