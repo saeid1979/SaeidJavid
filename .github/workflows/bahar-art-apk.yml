@@ -41,12 +41,12 @@ jobs:
         run: gradle -p bahar-art-android :app:assembleRelease --stacktrace
 
       - name: Prepare unsigned APK
-        run: cp bahar-art-android/app/build/outputs/apk/release/app-release-unsigned.apk BaharlooArt-v1.2.1-UNSIGNED.apk
+        run: cp bahar-art-android/app/build/outputs/apk/release/app-release-unsigned.apk BaharlooArt-v1.3.0-UNSIGNED.apk
 
       - name: Upload unsigned APK
         uses: actions/upload-artifact@v4
         with:
-          name: BaharlooArt-v1.2.1-UNSIGNED
-          path: BaharlooArt-v1.2.1-UNSIGNED.apk
+          name: BaharlooArt-v1.3.0-UNSIGNED
+          path: BaharlooArt-v1.3.0-UNSIGNED.apk
           if-no-files-found: error
           retention-days: 7
