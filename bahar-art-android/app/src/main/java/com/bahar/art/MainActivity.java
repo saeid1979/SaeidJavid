@@ -1,4 +1,4 @@
-package com.bahar.art;
+package com.baharloo.art.mobile;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -66,7 +66,10 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) webView.goBack();
-        else super.onBackPressed();
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
