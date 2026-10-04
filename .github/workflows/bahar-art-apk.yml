@@ -37,16 +37,16 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
-      - name: Build APK
-        run: gradle -p bahar-art-android :app:assembleDebug --stacktrace
+      - name: Build unsigned release APK
+        run: gradle -p bahar-art-android :app:assembleRelease --stacktrace
 
-      - name: Rename APK
-        run: cp bahar-art-android/app/build/outputs/apk/debug/app-debug.apk BaharlooArt-v1.1.2-LAUNCH-FIX.apk
+      - name: Rename unsigned APK
+        run: cp bahar-art-android/app/build/outputs/apk/release/app-release-unsigned.apk BaharlooArt-v1.2.0-UNSIGNED.apk
 
-      - name: Upload APK
+      - name: Upload unsigned APK
         uses: actions/upload-artifact@v4
         with:
-          name: BaharlooArt-v1.1.2-LAUNCH-FIX
-          path: BaharlooArt-v1.1.2-LAUNCH-FIX.apk
+          name: BaharlooArt-v1.2.0-UNSIGNED
+          path: BaharlooArt-v1.2.0-UNSIGNED.apk
           if-no-files-found: error
           retention-days: 7
