@@ -1,4 +1,4 @@
-package com.baharloo.art.mobile;
+package com.baharloo.art.release;
 
 import android.app.Activity;
 import android.content.Intent;
