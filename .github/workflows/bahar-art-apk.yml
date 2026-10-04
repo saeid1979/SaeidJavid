@@ -40,13 +40,25 @@ jobs:
       - name: Build unsigned release APK
         run: gradle -p bahar-art-android :app:assembleRelease --stacktrace
 
-      - name: Rename unsigned APK
-        run: cp bahar-art-android/app/build/outputs/apk/release/app-release-unsigned.apk BaharlooArt-v1.2.0-UNSIGNED.apk
+      - name: Prepare files
+        run: |
+          cp bahar-art-android/app/build/outputs/apk/release/app-release-unsigned.apk BaharlooArt-v1.2.0-UNSIGNED.apk
+          mkdir -p apksigner-tool/lib
+          cp /usr/local/lib/android/sdk/build-tools/35.0.0/apksigner apksigner-tool/
+          cp /usr/local/lib/android/sdk/build-tools/35.0.0/lib/apksigner.jar apksigner-tool/lib/
 
       - name: Upload unsigned APK
         uses: actions/upload-artifact@v4
         with:
           name: BaharlooArt-v1.2.0-UNSIGNED
           path: BaharlooArt-v1.2.0-UNSIGNED.apk
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload apksigner tool
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apksigner-tool
+          path: apksigner-tool
           if-no-files-found: error
           retention-days: 7
